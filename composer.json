@@ -51,7 +51,8 @@
         ],
         "stan": [
             "phpstan analyse"
-        ]
+        ],
+        "pest": "pest"
     },
     "extra": {
         "laravel": {
