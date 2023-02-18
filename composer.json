@@ -52,7 +52,13 @@
         "stan": [
             "phpstan analyse"
         ],
-        "pest": "pest"
+        "pest": "pest",
+        "pint": "pint",
+        "check": [
+            "@pint",
+            "@stan",
+            "@pest"
+        ]
     },
     "extra": {
         "laravel": {
