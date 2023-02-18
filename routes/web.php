@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return ['Laravel' => app()->version()];
+    return 'API de gestion des stocks';
 });
 
 require __DIR__.'/auth.php';
