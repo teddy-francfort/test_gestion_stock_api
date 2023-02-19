@@ -31,6 +31,7 @@ class ProductFactory extends Factory
         return [
             'name' => 'Produit test '.fake()->word(),
             'description' => fake()->text(),
+            'price' => fake()->randomFloat(2, 1, 500),
             'quantity' => fake()->numberBetween(0, 100),
             'deleted_at' => null,
             'created_at' => $now,
