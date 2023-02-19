@@ -54,11 +54,12 @@
             "phpstan analyse"
         ],
         "pest": "pest",
+        "test": "pest",
         "pint": "pint",
         "check": [
             "@pint",
-            "@stan",
-            "@pest"
+            "@pest",
+            "@stan"
         ]
     },
     "extra": {
