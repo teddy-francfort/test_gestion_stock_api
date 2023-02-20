@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
-use App\Models\Product;
+use App\Models\Movement;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductResource extends JsonResource
+class MovementResource extends JsonResource
 {
-    /** @var Product */
+    /** @var Movement */
     public $resource;
 
     /**
@@ -22,15 +22,11 @@ class ProductResource extends JsonResource
     {
         return [
             'id' => $this->resource->id,
-            'name' => $this->resource->name,
-            'description' => $this->resource->description,
             'price' => $this->resource->price,
             'quantity' => $this->resource->quantity,
-            'is_trashed' => $this->resource->trashed(),
-            'deleted_at' => $this->resource->deleted_at?->toISOString(),
             'created_at' => $this->resource->created_at?->toISOString(),
             'updated_at' => $this->resource->updated_at?->toISOString(),
-            'movements' => MovementResource::collection($this->whenLoaded('movements')),
+            'user' => UserResource::make($this->whenLoaded('user')),
         ];
     }
 }

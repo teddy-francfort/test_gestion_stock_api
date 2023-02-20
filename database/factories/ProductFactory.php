@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Movement;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -37,5 +38,22 @@ class ProductFactory extends Factory
             'created_at' => $now,
             'updated_at' => $now->addDay(),
         ];
+    }
+
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function (Product $product) {
+            Movement::query()->create([
+                'user_id' => null,
+                'product_id' => $product->id,
+                'price' => $product->price,
+                'quantity' => $product->quantity,
+            ]);
+        });
     }
 }

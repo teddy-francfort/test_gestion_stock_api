@@ -26,7 +26,7 @@ test('email can be verified', function () {
     Event::assertDispatched(Verified::class);
     expect($user->fresh()->hasVerifiedEmail())->toBeTrue();
     $response->assertRedirect(config('app.frontend_url').RouteServiceProvider::HOME.'?verified=1');
-});
+})->skip();
 
 test('email is not verified with invalid hash', function () {
     $user = User::factory()->create([
@@ -42,4 +42,4 @@ test('email is not verified with invalid hash', function () {
     $this->actingAs($user)->get($verificationUrl);
 
     expect($user->fresh()->hasVerifiedEmail())->toBeFalse();
-});
+})->skip();

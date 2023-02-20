@@ -16,4 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->apiResource('products', ProductController::class);
+Route::middleware(['auth:sanctum'])
+    ->delete('/products/{product}', [ProductController::class, 'destroy'])
+    ->withTrashed()
+    ->name('products.destroy');
+
+Route::middleware(['auth:sanctum'])->apiResource('products', ProductController::class)
+    ->only(['index', 'show', 'update'])
+    ->withTrashed();
+
+Route::middleware(['auth:sanctum'])->apiResource('products', ProductController::class)
+    ->only(['store']);

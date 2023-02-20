@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Movement;
 use App\Models\Product;
 use App\Models\User;
 use Database\Factories\UserFactory;
@@ -30,24 +31,42 @@ test('guest cannot create a product', function () use ($testingContext) {
     $this->assertDatabaseCount(Product::class, 0);
 });
 
-test('an authenticate user can create a product', function () use ($testingContext) {
+test('an authenticate user can create a product', function (array $goodData) use ($testingContext) {
+    $this->freezeTime();
+
     /** @var User $user */
-    $user = UserFactory::new()->createOneQuietly();
-    $formData = $testingContext::getGoodFormData();
+    $user = UserFactory::new()->create();
+    $formData = array_merge($testingContext::getGoodFormData(), $goodData);
 
     $response = $this->actingAs($user)->postJson(route($testingContext::ROUTE), $formData);
 
-    $response->assertSuccessful();
+    $response->assertCreated();
     $this->assertDatabaseCount(Product::class, 1);
+    /** @var Product $product */
+    $product = Product::query()->first();
 
     $expectedInDatabase = $formData;
     $expectedInDatabase['price'] = $formData['price'] * 100;
     $this->assertDatabaseHas(Product::class, $expectedInDatabase);
+    $this->assertDatabaseHas(Movement::class, [
+        'user_id' => $user->getKey(),
+        'product_id' => $product->id,
+        'quantity' => $product->quantity,
+        'price' => $product->price * 100,
+        'created_at' => now(),
+    ]);
+})->with(function () {
+    foreach ([0, 12.99, '12.99', 15] as $value) {
+        yield "price with value $value" => [['price' => $value]];
+    }
+    foreach ([0, 15] as $value) {
+        yield "quantity with value $value" => [['quantity' => $value]];
+    }
 });
 
 test('a product cannot be created with wrong data', function (array $wrongData) use ($testingContext) {
     /** @var User $user */
-    $user = UserFactory::new()->createOneQuietly();
+    $user = UserFactory::new()->create();
     $formData = array_merge($testingContext::getGoodFormData(), $wrongData);
 
     $response = $this->actingAs($user)->postJson(route($testingContext::ROUTE), $formData);
