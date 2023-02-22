@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['auth:sanctum'])->get('/is-auth', fn () => response()->json());
+
 Route::middleware(['auth:sanctum'])
     ->delete('/products/{product}', [ProductController::class, 'destroy'])
     ->withTrashed()
