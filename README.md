@@ -11,3 +11,18 @@ Fonctionnalités attendues :
 - Ajout/modification de produits (nom, description, quantité, ...).
 - Historisation des mouvements de stock : date, quantités, prix (pour les entrées), ...
 - Système de notification (mail) quand le stock d’un produit est bas.
+
+## Initialisation du projet
+
+**Initialiser la base de données avec des données tests**
+
+`php artisan migrate:fresh --seed`
+
+**Utilisateur test**
+
+Lorsque la base de données est initialisé avec des données tests,
+plusieurs utilisateurs sont générés automatiquement dont un manuellement
+
+identifiant : admin@test.com
+
+mot de passe : password
