@@ -26,3 +26,33 @@ plusieurs utilisateurs sont générés automatiquement dont un manuellement
 identifiant : admin@test.com
 
 mot de passe : password
+
+
+# Routes de l'API
+
+Les routes pour utiliser l'api sont les suivantes :
+
+GET|HEAD        api/is-auth
+
+GET|HEAD        api/products
+
+POST            api/products
+
+DELETE          api/products/{product}
+
+GET|HEAD        api/products/{product}
+
+PUT|PATCH       api/products/{product}
+
+**Routes de Laravel Breeze utilisé pour la connexion, la déconnexion et la création de compte**
+
+POST            login
+
+POST            logout
+
+POST            register
+
+**Route de sanctum pour récupérer un token CSRF**
+
+GET|HEAD        sanctum/csrf-cookie
+
