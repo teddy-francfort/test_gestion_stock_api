@@ -1,5 +1,7 @@
 # Test - API de gestion de stock
 
+[![CI workflow](https://github.com/teddy-francfort/test_gestion_stock_api/actions/workflows/ci.yml/badge.svg)](https://github.com/teddy-francfort/test_gestion_stock_api/actions/workflows/ci.yml)
+
 *Développé par Teddy FRANCFORT en Février 2023 dans le cadre d'un processus de recrutement*
 
 - Cette API est développé avec le framework PHP Laravel. 
