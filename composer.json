@@ -57,8 +57,9 @@
         "pest": "pest",
         "test": "pest",
         "pint": "pint",
+        "pint-test": "pint --test",
         "check": [
-            "@pint",
+            "@pint-test",
             "@pest",
             "@stan"
         ]
