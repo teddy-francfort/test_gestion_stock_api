@@ -67,6 +67,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return new JsonResponse(status:204);
+        return new JsonResponse(status: 204);
     }
 }
