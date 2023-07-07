@@ -37,7 +37,7 @@ class ProductQuantityLowNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Attention ! Le stock du produit '.$this->product->name
-                        .' est bas ( quantité '.$this->product->quantity.')');
+            ->line('Attention ! Le stock du produit '.$this->product->name
+                .' est bas ( quantité '.$this->product->quantity.')');
     }
 }

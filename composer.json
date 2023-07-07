@@ -6,24 +6,24 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "doctrine/dbal": "^3.6",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/breeze": "^1.19",
-        "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "doctrine/dbal": "^3.6.4",
+        "guzzlehttp/guzzle": "^7.5",
+        "laravel/breeze": "^1.19.1",
+        "laravel/framework": "^10.14.1",
+        "laravel/sanctum": "^3.2.1",
+        "laravel/tinker": "^2.8.1"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
-        "laravel/sail": "^1.18",
-        "mockery/mockery": "^1.4.4",
+        "fakerphp/faker": "^1.21.0",
+        "laravel/pint": "^1.5",
+        "laravel/sail": "^1.20.2",
+        "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^6.4",
-        "nunomaduro/larastan": "^2.0",
-        "pestphp/pest": "^1.22",
-        "pestphp/pest-plugin-laravel": "^1.2",
-        "spatie/laravel-ignition": "^2.0",
-        "spatie/laravel-ray": "^1.32"
+        "nunomaduro/larastan": "^2.4.1",
+        "pestphp/pest": "^1.23",
+        "pestphp/pest-plugin-laravel": "^1.4",
+        "spatie/laravel-ignition": "^2.2",
+        "spatie/laravel-ray": "^1.32.2"
     },
     "autoload": {
         "psr-4": {
