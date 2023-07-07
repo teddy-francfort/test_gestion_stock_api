@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 
 dataset('products', [
     'active products' => [fn () => Product::factory()->count(3)->create()],
@@ -15,12 +16,12 @@ beforeEach(function () {
     $this->route = 'products.index';
 });
 
-test('guest cannot access products', function () {
+test('guest cannot access products', function (Collection $products) {
     $response = $this->getJson(route($this->route));
     $response->assertUnauthorized();
 })->with('products');
 
-test('authenticated user can access products (active and soft deleted)', function ($products) {
+test('authenticated user can access products (active and soft deleted)', function (Collection $products) {
     $user = User::factory()->create();
 
     $response = $this
