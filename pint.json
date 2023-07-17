@@ -4,6 +4,7 @@
         "blank_line_after_namespace": true,
         "concat_space": true,
         "declare_parentheses": true,
-        "declare_strict_types": true
+        "declare_strict_types": true,
+        "nullable_type_declaration_for_default_null_value": false
     }
 }
