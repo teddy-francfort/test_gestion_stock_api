@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
-      max-parallel: 1
+      max-parallel: 3
       matrix:
         os: ['ubuntu-latest']
         php-version: ['8.1', '8.2', '8.3']
